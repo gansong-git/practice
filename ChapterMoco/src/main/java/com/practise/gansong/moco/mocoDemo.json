@@ -1,0 +1,224 @@
+[
+  {
+    "description": "step-----获取人员信息。。",
+    "request": {
+      "uri": "/user/getUserInfo",
+      "method": "get",
+      "cookies": {
+        "token": "testUserToken"
+      },
+      "headers": {
+        "content-type": "application/json; charset=utf-8"
+      },
+      "queries": {
+        "name": "wangwu",
+        "userId": "66666"
+      }
+    },
+    "response": {
+      "json": {
+        "status": "1",
+        "data": {
+          "address": "hebei province",
+          "age": 28,
+          "sex": "man",
+          "position": "developer",
+          "workingYears": 8,
+          "companyName": "test.inc",
+          "department": "Test Dept",
+          "workingCity": "beijing"
+        }
+      }
+    }
+  },
+
+
+  {
+    "description": "step-----获取公司信息。。",
+    "request": {
+      "uri": "/info/getCompanyInfo",
+      "method": "get",
+      "headers": {
+        "content-type": "application/json; charset=utf-8"
+      },
+      "cookies": {
+        "token": "testUserToken"
+      },
+      "queries": {
+        "address": "beijing",
+        "companyName": "test.inc"
+      }
+    },
+    "response": {
+      "json": {
+        "status": 1,
+        "data": {
+          "companyname": "test.inc",
+          "address": "sanyuanqiao",
+          "companyId": "100086"
+        }
+      }
+    }
+  },
+
+
+
+  {
+    "description": "step-----获取部门信息。。",
+    "request": {
+      "uri": "/info/getDepartmentInfo",
+      "method": "post",
+      "headers": {
+        "content-type": "application/json; charset=utf-8"
+      },
+      "cookies": {
+        "token": "testUserToken"
+      },
+      "json": {
+        "companyId": "100086",
+        "department": "Test Dept"
+      }
+    },
+    "response": {
+      "json": {
+        "status": 1,
+        "data": {
+          "department": "Test Dept",
+          "deptId": 16,
+          "description": "负责公司项目测试质量工作。。。"
+        }
+      }
+    }
+  },
+
+  {
+    "description": "step-----获取员工信息。。",
+    "request": {
+      "uri": "/info/getEmployeeInfo",
+      "method": "post",
+      "headers": {
+        "content-type": "application/json; charset=utf-8"
+      },
+      "cookies": {
+        "token": "testUserToken"
+      },
+      "json": {
+        "companyId": "100086",
+        "userId": "66666"
+      }
+    },
+    "response": {
+      "json": {
+        "status": 1,
+        "data": {
+          "name": "wangwu",
+          "sex": "man",
+          "age": "28",
+          "entryTime": "2018-08-08",
+          "empployeeId": "9527",
+          "staffLevel": 3,
+          "department": "Test Dept"
+        }
+      }
+    }
+  },
+
+  {
+    "description": "step-----薪水等级列表。。",
+    "request": {
+      "uri": "/salary/getSalaryList",
+      "method": "post",
+      "headers": {
+        "content-type": "application/json; charset=utf-8"
+      },
+      "cookies": {
+        "token": "testUserToken"
+      },
+      "json": {
+        "companyId": "100086",
+        "deptId": "16"
+      }
+    },
+    "response": {
+      "json": {
+        "status": 1,
+        "data": {
+          "deptId": "16",
+          "salaryList": [
+            {
+              "level": "5",
+              "salary": "20000"
+            },
+            {
+              "level": "6",
+              "salary": "26000"
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "description": "练习moco。。",
+    "request": {
+      "uri": "/postDemo2",
+      "method": "get"
+    },
+    "response": {
+      "json": {
+        "status": 2,
+        "position": "developer"
+      }
+    }
+  },
+  {
+    "description": "练习moco。。",
+    "request": {
+      "uri": "/post/withCookieAndHeader",
+      "method": "post",
+      "headers": {
+        "content-type": "application/json"
+      },
+      "cookies": {
+        "token": "studymocotest"
+      },
+      "json": {
+        "name": "xiaoming",
+        "age": "13"
+      }
+    },
+    "response": {
+      "json": {
+        "status": 2,
+        "position": "student"
+      }
+    }
+  },
+  {
+    "description": "重镜像到百度！",
+    "request": {
+      "uri": "/jump/redirect"
+    },
+    "redirectTo": "http://www.baidu.com"
+  },
+  {
+    "description": "二次重镜像",
+    "request": {
+      "uri": "/third/redirect"
+    },
+    "redirectTo": "/third/redirect/target"
+  },
+  {
+    "description": "被二次重镜像跳转的地址",
+    "request": {
+      "uri": "/third/redirect/target"
+    },
+    "response": {
+      "json": {
+        "statusCode": "2",
+        "result": "success",
+        "description": "重镜像成功！！！！！！"
+      }
+    }
+  }
+]
